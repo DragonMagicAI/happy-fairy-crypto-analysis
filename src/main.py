@@ -426,4 +426,29 @@ async def main_async():
             print("✅ 监控服务已停止")
         
         elif args.stop:
-            #
+            # 停止监控服务
+            print("🛑 停止监控服务...")
+            await analyzer.stop_monitoring()
+            print("✅ 监控服务已停止")
+        
+        else:
+            # 显示帮助信息
+            parser.print_help()
+    
+    except KeyboardInterrupt:
+        print("\n🛑 程序被用户中断")
+    except Exception as e:
+        print(f"❌ 程序运行出错: {e}")
+        import traceback
+        traceback.print_exc()
+    finally:
+        # 确保监控服务停止
+        if analyzer.running:
+            await analyzer.stop_monitoring()
+
+def main():
+    """主函数"""
+    asyncio.run(main_async())
+
+if __name__ == "__main__":
+    main()
