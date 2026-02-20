@@ -1,0 +1,94 @@
+{
+  "name": "happy-fairy-crypto-analysis",
+  "version": "1.0.0",
+  "description": "快乐魔仙数字货币分析技能 - 实时行情分析和技术指标计算",
+  "author": "快乐魔仙 🧚✨ & 黎山 🌄",
+  "license": "MIT",
+  "keywords": [
+    "openclaw",
+    "skill",
+    "crypto",
+    "trading",
+    "analysis",
+    "technical-indicators",
+    "bitcoin",
+    "ethereum"
+  ],
+  "homepage": "https://github.com/DragonMagicAI/happy-fairy-crypto-analysis",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DragonMagicAI/happy-fairy-crypto-analysis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DragonMagicAI/happy-fairy-crypto-analysis/issues"
+  },
+  "engines": {
+    "openclaw": ">=2026.2.17",
+    "node": ">=16.0.0",
+    "python": ">=3.8"
+  },
+  "dependencies": {
+    "python": [
+      "requests>=2.28.0",
+      "pandas>=1.5.0",
+      "numpy>=1.23.0",
+      "python-telegram-bot>=20.0",
+      "pyyaml>=6.0",
+      "schedule>=1.2.0"
+    ]
+  },
+  "scripts": {
+    "install": "pip install -r requirements.txt",
+    "test": "pytest tests/ -v",
+    "start": "python src/main.py",
+    "analyze-btc": "python src/cli.py analyze --currency BTC",
+    "analyze-eth": "python src/cli.py analyze --currency ETH",
+    "monitor": "python src/monitor.py"
+  },
+  "config": {
+    "skill_type": "analysis",
+    "requires_config": true,
+    "commercial": false,
+    "payment_required": false,
+    "supported_currencies": ["BTC", "ETH"],
+    "supported_exchanges": ["coingecko"],
+    "notification_channels": ["telegram"]
+  },
+  "commands": [
+    {
+      "name": "analyze",
+      "description": "分析指定数字货币",
+      "usage": "analyze --currency <BTC|ETH> [--timeframe <2h|4h|1d>]",
+      "example": "analyze --currency BTC --timeframe 2h"
+    },
+    {
+      "name": "monitor",
+      "description": "启动监控服务",
+      "usage": "monitor [--start|--stop|--status]",
+      "example": "monitor --start"
+    },
+    {
+      "name": "config",
+      "description": "管理配置",
+      "usage": "config [--show|--set <key=value>]",
+      "example": "config --show"
+    }
+  ],
+  "examples": {
+    "basic_analysis": "openclaw skill happy-fairy-crypto-analysis analyze --currency BTC",
+    "start_monitoring": "openclaw skill happy-fairy-crypto-analysis monitor --start",
+    "check_status": "openclaw skill happy-fairy-crypto-analysis monitor --status"
+  },
+  "contributors": [
+    {
+      "name": "快乐魔仙",
+      "email": "moxian@happyfairy.tools",
+      "role": "AI Developer"
+    },
+    {
+      "name": "黎山",
+      "email": "lishan@happyfairy.tools",
+      "role": "Strategic Partner"
+    }
+  ]
+}

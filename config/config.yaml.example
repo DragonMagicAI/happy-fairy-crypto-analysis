@@ -1,0 +1,89 @@
+# 快乐魔仙数字货币分析技能配置
+# 请根据您的需求修改以下配置
+
+# API配置
+api:
+  coingecko:
+    enabled: true
+    api_key: ""  # 可选，提高速率限制
+    cache_ttl: 300  # 缓存时间(秒)
+
+# 币种配置
+currencies:
+  - symbol: BTC
+    name: Bitcoin
+    coin_id: bitcoin
+    enabled: true
+    
+  - symbol: ETH
+    name: Ethereum
+    coin_id: ethereum
+    enabled: true
+
+# 分析配置
+analysis:
+  default_timeframe: "2h"
+  
+  # 技术指标配置
+  indicators:
+    # 移动平均线
+    ma:
+      periods: [5, 48, 180]
+      enabled: true
+    
+    # MACD指标
+    macd:
+      fast: 6
+      slow: 7
+      signal: 6
+      enabled: true
+    
+    # KDJ指标
+    kdj:
+      period: 9
+      k_period: 3
+      d_period: 3
+      enabled: true
+    
+    # SKDJ指标（慢速随机指标）
+    skdj:
+      period: 9
+      k_period: 3
+      d_period: 3
+      enabled: true
+    
+    # OBV能量潮指标
+    obv:
+      period: 30
+      enabled: true
+    
+    # TD序列指标
+    td:
+      buy_count: 9
+      sell_count: 13
+      enabled: true
+
+# 通知配置
+notification:
+  enabled: true
+  interval: 60      # 检查间隔(秒)
+  cooldown: 300     # 同一币种冷却时间(秒)
+  
+  # Telegram通知
+  telegram:
+    enabled: true
+    bot_token: "YOUR_BOT_TOKEN_HERE"  # 从 @BotFather 获取
+    chat_id: "YOUR_CHAT_ID_HERE"      # 您的Telegram Chat ID
+
+# 监控配置
+monitoring:
+  enabled: true
+  check_interval: 60      # 检查间隔(秒)
+  alert_threshold: 1.0    # 价格变化警报阈值(%)
+
+# 日志配置
+logging:
+  level: "INFO"
+  file: "logs/analysis.log"
+  max_size: "10MB"
+  backup_count: 5
